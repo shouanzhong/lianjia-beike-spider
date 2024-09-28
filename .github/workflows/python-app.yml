@@ -8,6 +8,8 @@ on:
     branches: [ "patch-sync-beike" ]
   pull_request:
     branches: [ "patch-sync-beike" ]
+  schedule:
+    - cron: "0 4 * * *"
 
 permissions:
   contents: write
@@ -59,5 +61,5 @@ jobs:
         ls data -lh
         git add -f data/*
         git commit -m "auto update"
-        git pull --rebase
+        git pull --rebase -X ours 
         git push -u origin
