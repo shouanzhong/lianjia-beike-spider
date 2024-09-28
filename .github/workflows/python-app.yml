@@ -46,7 +46,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git add data/*
+        git add -f data/*
         git commit -m "auto update"
         git pull --rebase
         git push -u origin
