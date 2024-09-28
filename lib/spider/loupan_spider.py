@@ -70,6 +70,9 @@ class LouPanBaseSpider(BaseSpider):
             BaseSpider.random_delay()
             response = requests.get(page, timeout=10, headers=headers)
             html = response.content
+            if '''为您找到</span>\n            <span class="value">0</span>''' in html.decode('utf-8'):
+                print("No data for this page")
+                break
             soup = BeautifulSoup(html, "lxml")
 
             # 获得有小区信息的panel
