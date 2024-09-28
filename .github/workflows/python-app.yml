@@ -29,10 +29,20 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Create file
       run: |
-        #python loupan.py sz
-        #python ershou.py sz
-        #python xiaoqu.py sz
-        python zufang.py sz
+        # 定义一个数组，包含指定的城市名简写
+        cities=("sz" "sh" "bj" "dg" "gz")  
+        # 定义一个数组，包含所有的Python脚本
+        scripts=("loupan.py" "ershou.py" "xiaoqu.py" "zufang.py") 
+        # 遍历城市数组
+        for city in "${cities[@]}"; do
+            echo "Processing city: $city"
+            # 遍历脚本数组，运行每个脚本
+            for script in "${scripts[@]}"; do
+                echo "Running script: $script for city:$city"
+                echo python $script $city
+            done
+            echo "-----------------------------------"
+        done
 
       # 配置git
     - name: Config git
