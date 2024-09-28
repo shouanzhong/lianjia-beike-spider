@@ -39,7 +39,7 @@ jobs:
             # 遍历脚本数组，运行每个脚本
             for script in "${scripts[@]}"; do
                 echo "Running script: $script for city:$city"
-                echo python $script $city
+                python $script $city
             done
             echo "-----------------------------------"
         done
