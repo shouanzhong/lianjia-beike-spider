@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "patch-sync-beike" ]
   schedule:
-    - cron: "0 4 * * *"
+    - cron: '0 4 * * *'
 
 permissions:
   contents: write
