@@ -4,10 +4,10 @@
 name: Python application
 
 on:
-  push:
-    branches: [ "patch-sync-beike" ]
-  pull_request:
-    branches: [ "patch-sync-beike" ]
+  # push:
+  #   branches: [ "patch-sync-beike" ]
+  # pull_request:
+  #   branches: [ "patch-sync-beike" ]
   schedule:
     - cron: '0 4 * * *'
 
@@ -34,7 +34,7 @@ jobs:
         # 定义一个数组，包含指定的城市名简写
         cities=("sz" "sh" "bj" "dg" "gz")  
         # 定义一个数组，包含所有的Python脚本
-        scripts=("loupan.py" "ershou.py" "xiaoqu.py" "zufang.py") 
+        scripts=("zufang.py" "loupan.py" "ershou.py" "xiaoqu.py") 
         # 遍历城市数组
         for city in "${cities[@]}"; do
             echo "Processing city: $city"
@@ -59,7 +59,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         ls data -lh
-        git add -f data/*
+        git add -f data
         git commit -m "auto update"
         git pull --rebase -X ours 
         git push -u origin
