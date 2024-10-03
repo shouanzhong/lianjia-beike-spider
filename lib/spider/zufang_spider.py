@@ -91,9 +91,15 @@ class ZuFangBaseSpider(BaseSpider):
             # 获得有小区信息的panel
             if SPIDER_NAME == "lianjia":
                 ul_element = soup.find('ul', class_="house-lst")
+                if not ul_element:
+                    print("未定位到 element: ul class=house-lst ")
+                    continue
                 house_elements = ul_element.find_all('li')
             else:
                 ul_element = soup.find('div', class_="content__list")
+                if not ul_element:
+                    print("未定位到 element: div class=content__list ")
+                    continue
                 house_elements = ul_element.find_all('div', class_="content__list--item")
 
             if len(house_elements) == 0:
